@@ -7,7 +7,8 @@ describe('Main', function() {
       expect(true).toBe(false); 
     });
     it('should pass the test by finding the global varible',function(){
-      expect(globalVar).toBe(false); 
+      var globalVar = globalVar || undefined;
+      expect(globalVar).toBe('ninjas'); 
     });
   });
 
