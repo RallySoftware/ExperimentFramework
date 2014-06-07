@@ -1,5 +1,5 @@
 (function() {
-  var onLoginClick = function() {
+  var onSubmitClick = function() {
     var id = document.getElementsByName('login')[0].value,
         pw = document.getElementsByName('password')[0].value;
 
@@ -28,17 +28,13 @@
         _setUsername(id);
         _setSecurityToken(data.OperationResult.SecurityToken);
 
-        _goToApp();
+        navigateTo.app();
       },
 
       error: function (xhr, errorType, error) {
         return false;
       }
     });
-  };
-  var onAcceptClick = function() {
-    if (window.sessionStorage.securityToken) {_showApp();}
-    else {_showLogin();}
   };
 
   var _setUsername = function(username) {
@@ -47,34 +43,16 @@
   var _setSecurityToken = function(token) {
     window.sessionStorage.setItem('securityToken', token ? token : '');
   };
-  var _showApp = function() {
-    window.location.href = 'index.html';
-  };
-  var _showBrowserSupport = function() {
-    window.location.href = 'browser.html';
-  };
-  var _showLogin = function() {
-    window.location.href = 'login.html';
-  };
-  var _isChrome = function() {
-    return window.chrome && window.navigator.vendor === "Google Inc.";
-  };
-  var _addClickListener = function(name, listener) {
-    var button = document.getElementsByName(name)[0];
-    if (button) {button.addEventListener('click', listener);}
-  };
 
   window.onload = function () {
-    if (!_isChrome()) {
-      _showBrowserSupport();
+    if (!util.isChrome()) {
+      navigateTo.browser();
     }
     else if (window.sessionStorage.securityToken) {
-      _showApp();
+      navigateTo.app();
     }
-    else {
-      _addClickListener('submit', onLoginClick);
-      _addClickListener('accept', onAcceptClick);
-    }
+
+    util.addClickListener('submit', onSubmitClick);
   };
 })();
 
