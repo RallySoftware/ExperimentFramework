@@ -36,23 +36,44 @@
       }
     });
   };
+  var onAcceptClick = function() {
+    if (window.sessionStorage.securityToken) {_showApp();}
+    else {_showLogin();}
+  };
 
   var _setUsername = function(username) {
     window.sessionStorage.setItem('username', username ? username : '');
   };
   var _setSecurityToken = function(token) {
-    window.sessionStorage.setItem('token', token ? token : '');
+    window.sessionStorage.setItem('securityToken', token ? token : '');
   };
-  var _goToApp = function() {
+  var _showApp = function() {
     window.location.href = 'index.html';
+  };
+  var _showBrowserSupport = function() {
+    window.location.href = 'browser.html';
+  };
+  var _showLogin = function() {
+    window.location.href = 'login.html';
+  };
+  var _isChrome = function() {
+    return window.chrome && window.navigator.vendor === "Google Inc.";
+  };
+  var _addClickListener = function(name, listener) {
+    var button = document.getElementsByName(name)[0];
+    if (button) {button.addEventListener('click', listener);}
   };
 
   window.onload = function () {
-    if (window.sessionStorage.token) {
-      _goToApp();
+    if (!_isChrome()) {
+      _showBrowserSupport();
+    }
+    else if (window.sessionStorage.securityToken) {
+      _showApp();
     }
     else {
-      document.getElementsByName('submit')[0].addEventListener('click', onLoginClick);
+      _addClickListener('submit', onLoginClick);
+      _addClickListener('accept', onAcceptClick);
     }
   };
 })();
