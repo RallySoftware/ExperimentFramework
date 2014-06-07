@@ -1,0 +1,6 @@
+deploy
+.grunt
+node_modules
+bower_components
+SpecRunner.html
+.DS_Store
