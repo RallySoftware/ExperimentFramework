@@ -6,6 +6,9 @@ describe('Main', function() {
     it('should default the url to have the expected trailing / ',function(){
       expect(true).toBe(false); 
     });
+    it('should pass the test by finding the global varible',function(){
+      expect(globalVar).toBe(false); 
+    });
   });
 
 });
