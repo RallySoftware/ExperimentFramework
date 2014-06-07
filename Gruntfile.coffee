@@ -5,11 +5,12 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-jshint'
   grunt.loadNpmTasks 'grunt-contrib-stylus'
   grunt.loadNpmTasks 'grunt-groundskeeper'
-  grunt.loadNpmTasks 'grunt-contrib-jasmine'
+  grunt.loadNpmTasks 'grunt-jasmine-node'
 
   grunt.registerTask 'deploy', ['clean:deploy','jshint','uglify']
   grunt.registerTask 'debug', ['clean:debug','jshint','uglify']
   grunt.registerTask 'default', ['debug','jasmine']
+  grunt.registerTask 'default', ['jasmine_node']
   
   spec = grunt.option('spec') || '*'
 
@@ -47,3 +48,7 @@ module.exports = (grunt) ->
               'bower_components/jasmine/lib/jasmine-core/boot/boot.js'
             ]
             outfile:'SpecRunner.html'
+    jasmine_node:
+      all: ['test/']
+
+
