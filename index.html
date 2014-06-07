@@ -8,6 +8,7 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,67 +21,92 @@
     <![endif]-->
   </head>
   <body>
-    <h1>Rally Lab Report</h1>
-    <h2>Before</h2>
+  
+	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+	    <img id="logo" class="pull-left" src="rallyLogo_square.png" height="40px" width="40px" />
+	    <h1 class="pull-left">Rally Experiment Framework</h1>
+	    <img class="pull-right" id="profile" src="P1030088.jpg" height="40px" width="40px" />
+	</nav>
+
+    <h1>Lab Report <span class="small">Before</span></h1>
     
     <form>
     
-    <h3>Desired Outcome</h3>
-    <p>What you are trying to accomplish, change or learn?</p>
-    <textarea id="outcome"></textarea>
-        
-    <h3>Hypothesis</h3>
-    <p>What do you want to try?</p>
-    <textarea id="hypothesis"></textarea>
-    
-    <h3>Resources Needed</h3>
-    <p>What type of support, equipment, people and buy in is needed to properly learn from the experiment?</p>
-    <textarea id="hypothesis"></textarea>
-    
-    <h3>Procedure</h3>
-    <p>What process are you going to adopt, change or alter?</p>
-    <textarea id="hypothesis"></textarea>
-    
-    <h3>Data to be Collected</h3>
-    <p>How will you know the effects that your change created? Can you adopt a control group to help you be sure?</p>
-    <textarea id="hypothesis"></textarea>
-    
-    <h3>Current State</h3>
-    <p>What is the current state of the data you are collecting?</p>
-    <textarea id="hypothesis"></textarea>
+	    <div class="form-group">
+		    <label for="outcome">Desired Outcome</label>
+		    <p>What you are trying to accomplish, change or learn?</p>
+		    <textarea id="outcome"></textarea>
+	    </div>
+	        
+	    <div class="form-group">
+		    <label for="hypothesis">Hypothesis</label>
+		    <p>What do you want to try?</p>
+		    <textarea id="hypothesis"></textarea>
+	    </div>
+	    
+	    <div class="form-group">
+		    <label for="resources">Resources Needed</label>
+		    <p>What type of support, equipment, people and buy in is needed to properly learn from the experiment?</p>
+		    <textarea id="resources"></textarea>
+	    </div>
+	    
+	    <div class="form-group">
+		    <label for="procedure">Procedure</label>
+		    <p>What process are you going to adopt, change or alter?</p>
+		    <textarea id="procedure"></textarea>
+	    </div>
+	    
+	    <div class="form-group">
+		    <label for="data">Data to be Collected</label>
+		    <p>How will you know the effects that your change created? Can you adopt a control group to help you be sure?</p>
+		    <textarea id="data"></textarea>
+	    </div>
+	    
+	    <div class="form-group">
+		    <label for="current_state">Current State</label>
+		    <p>What is the current state of the data you are collecting?</p>
+		    <textarea id="current_state"></textarea>
+		    <input type="file" id="current_state_file">
+		</div>
     
     </form>
     
-    <p>After socializing the idea of the experiment and the changes that you are trying to create in your organization you are ready to see how it goes.</p>
+    <hr>
+    
+    <p class="bg-info">After socializing the idea of the experiment and the changes that you are trying to create in your organization you are ready to see how it goes.</p>
 
-	<p>After you complete your experiment you should fill out the second part of the report.</p>
+	<p class="bg-info">After you complete your experiment you should fill out the second part of the report.</p>
 	
-	  <button class="btn btn-default btn-lg" type="button">
-	    Save
-	  </button>
-
+	<hr>
 	
-	
-	<h1>Rally Lab Report</h1>
-    <h2>After</h2>
+	<h1>Lab Report <span class="small">After</span></h1>
     
     <form>
     
-    <h3>Post Experiment State</h3>
-    <p>What is the new state of the data you are collected?</p>
-    <textarea id="outcome"></textarea>
+    <div class="form-group">
+    	<label for="post_state">Post Experiment State</label>
+	    <p>What is the new state of the data you are collected?</p>
+	    <textarea id="post_state"></textarea>
+	    <input type="file" id="current_state_file">
+    </div>
         
-    <h3>Evaluate Effectiveness of Change</h3>
-    <p>Did your experiment create the desired effect?</p>
-    <textarea id="hypothesis"></textarea>
+    <div class="form-group">
+    	<label for="effectiveness">Evaluate Effectiveness of Change</label>
+	    <p>Did your experiment create the desired effect?</p>
+	    <textarea id="effectiveness"></textarea>
+    </div>
     
-    <h3>Outliers</h3>
-    <p>Did any unexpected forces change the outcome of your experiment?</p>
-    <textarea id="hypothesis"></textarea>
+    <div class="form-group">
+    	<label for="outliers">Outliers</label>
+	    <p>Did any unexpected forces change the outcome of your experiment?</p>
+	    <textarea id="outliers"></textarea>
+    </div>
     
-    <h3>Analysis and Recommended Next Experiment</h3>
-    <p>What’s next to continue your progress?</p>
-    <textarea id="hypothesis"></textarea>
+    <div class="form-group">
+    	<label for="analysis">Analysis and Recommended Next Experiment</label>
+	    <p>What’s next to continue your progress?</p>
+	    <textarea id="analysis"></textarea>
+    </div>
     
     </form>
     
