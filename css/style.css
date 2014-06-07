@@ -35,7 +35,7 @@ textarea, input {
 textarea {
 	min-height: 100px;
 }
-button {
+input.button {
 	color: #fff;
 	background: #00A9E0;    /* $cyan */
 	width: auto;
@@ -46,7 +46,7 @@ button {
 	font-family: "NotoSansBold"; 
 	border-radius: 2px;
 }
-button:hover {
+input.button:hover {
 	background: #29beff;   /* $cyan_hover */
 	color: #fff; 
 	text-decoration: none;
@@ -64,6 +64,9 @@ h3 {
 }
 #pagetitle {
 	margin-top: 0;
+}
+#profile {
+	display: none;
 }
 p {
 	font-size: 1.2em;
