@@ -1,0 +1,5 @@
+language: node_js
+node_js:
+  - 0.10.1
+notifications:
+  flowdock: e1a8dd265f5338805b0832c832191e80
