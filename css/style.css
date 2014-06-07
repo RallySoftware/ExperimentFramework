@@ -40,6 +40,11 @@ button {
 	background: #00A9E0;    /* $cyan */
 	width: auto;
 	float: right;
+	border: none;
+	padding: 6px 12px; 
+	font-size: 1.4em;
+	font-family: "NotoSansBold"; 
+	border-radius: 2px;
 }
 button:hover {
 	background: #29beff;   /* $cyan_hover */
