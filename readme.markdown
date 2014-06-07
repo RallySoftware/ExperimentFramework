@@ -11,3 +11,5 @@ Most installs of Node will include NPM.
  `grunt` will run all the tests
 
  `grunt watch` will watch for changes files and compile the files and run the tests automaticly.
+
+[![Build Status](https://travis-ci.org/ferentchak/ExperimentFramework.svg?branch=master)](https://travis-ci.org/ferentchak/ExperimentFramework)
