@@ -24,17 +24,20 @@ label {
 	padding-top: 1em;
 	font-family: 'proxima_nova_ltsemibold';
 }
-textarea {
+textarea, input {
 	width: 100%;
 	background: #fff;
 	border-radius: 2px;
 	border: 1px solid #d6d6d6;
 	padding: 8px;
-	min-height: 100px;
 	margin-bottom: 5px;
+}
+textarea {
+	min-height: 100px;
 }
 h1 {
 	font-family: 'proxima_nova_rgbold';
+	text-align: center;
 }
 h3 {
 	font-size: 1.5em;
