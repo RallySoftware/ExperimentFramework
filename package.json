@@ -23,7 +23,8 @@
   "devDependencies": {
     "bower": "~1.2.8",
     "jshint": "~2.4.3",
-    "grunt-jasmine-node": "~0.2.1"
+    "grunt-jasmine-node": "~0.2.1",
+    "grunt": "~0.4.5"
   },
   "jshintConfig": {
     "node": true,
