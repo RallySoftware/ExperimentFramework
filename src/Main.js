@@ -1,13 +1,14 @@
-var preferenceManager;
+var preferenceManager,profileManager;
 $( document ).ready(function(){
-  var baseUrl = "https://rally1.rallydev.com/slm/webservice/v2.0/Preference";
+  var baseUrl = "https://rally1.rallydev.com/slm/webservice/v2.0/";
+  var prefUrl = baseUrl + "preference";
+  var userUrl = baseUrl + "user";
   preferenceManager = 
   {
-    getPrefs:function(pref)
+    getPrefs:function()
     {
       var deferred = Q.defer();
-      superagent.get(baseUrl)
-      .set('Access-Control-Allow-Origin', 'http://localhost:8000/')
+      superagent.get(prefUrl)
       .withCredentials()
       .end(function(e,res){
         if(e) deferred.reject(e);
@@ -30,5 +31,30 @@ $( document ).ready(function(){
     }
     
   };
-  preferenceManager.getPrefs();
+
+  profileManager = 
+  {
+    getCurrentUser:function()
+    {
+      var deferred = Q.defer();
+      superagent.get(userUrl)
+      .withCredentials()
+      .end(function(e,res){
+        if(e) deferred.reject(e);
+        else if(res.error) deferred.reject(new Error(res.body.message));
+        else deferred.resolve(JSON.parse(res.text).User);
+      });
+      return deferred.promise;
+    },
+    getImageUrl:function(){
+      return profileManager.getCurrentUser().then(function(user){
+        return new Q('https://rally1.rallydev.com/slm/profile/image/'+user.ObjectID + '/50.sp');
+      });
+    }
+  };
+
+  profileManager.getImageUrl().then(function(imageUrl){
+    $('#profile')[0].src = imageUrl;
+    console.log(imageUrl);
+  });;
 });
