@@ -35,6 +35,17 @@ textarea, input {
 textarea {
 	min-height: 100px;
 }
+button {
+	color: #fff;
+	background: #00A9E0;    /* $cyan */
+	width: auto;
+	float: right;
+}
+button:hover {
+	background: #29beff;   /* $cyan_hover */
+	color: #fff; 
+	text-decoration: none;
+}
 h1 {
 	font-family: 'proxima_nova_rgbold';
 	text-align: center;
@@ -50,7 +61,8 @@ h3 {
 	margin-top: 0;
 }
 p {
-	font-size: 1.3em;
+	font-size: 1.2em;
+	color: #666;
 }
 .btn {
 	border: none;
@@ -64,10 +76,12 @@ p {
 	text-decoration: none;
 }
 .bg-info {
-	background: #BFE9F5;
+	background: #82D3ED;
 	padding: .5em;
 	border-radius: 2px;
 	margin: 30px 0;
+	color: #fff;
+	font-family: 'proxima_nova_ltsemibold';
 }
 hr {
 	border: 1px solid #d6d6d6;
