@@ -63,8 +63,12 @@ p {
 	background: #BFE9F5;
 	padding: .5em;
 	border-radius: 2px;
-	margin: 30px;
+	margin: 30px 0;
 }
 hr {
 	border: 1px solid #d6d6d6;
+}
+.picto {
+	font-family: "Rally";
+	font-size: .75em;
 }
