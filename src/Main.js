@@ -97,7 +97,7 @@ $( document ).ready(function(){
       return preferenceManager.save(experimentId,field,value,prefObjectId)
       .then(function(){
         return new Q();
-      );
+      });
     }
     $('textarea').blur(onBlur);
     $('input').blur(onBlur);
