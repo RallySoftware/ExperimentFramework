@@ -54,7 +54,8 @@ $( document ).ready(function(){
   };
 
   profileManager.getImageUrl().then(function(imageUrl){
-    $('#profile')[0].src = imageUrl;
-    console.log(imageUrl);
+    var profile = $('#profile');
+    profile[0].src = imageUrl;
+    profile.removeClass('hide')
   });;
 });
