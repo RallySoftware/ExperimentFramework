@@ -42,7 +42,7 @@ input.button {
 	float: right;
 	border: none;
 	padding: 6px 12px; 
-	font-size: 1.4em;
+	font-size: 1em;
 	font-family: "NotoSansBold"; 
 	border-radius: 2px;
 }
@@ -54,6 +54,11 @@ input.button:hover {
 h1 {
 	font-family: 'proxima_nova_rgbold';
 	text-align: center;
+	padding-bottom: 20px;
+}
+h2 {
+	font-size: 1.4em;
+	font-family: 'proxima_nova_ltsemibold';
 }
 h3 {
 	font-size: 1.5em;
@@ -100,4 +105,12 @@ hr {
 }
 .small {
 	font-family: 'proxima_nova_ltsemibold';
+}
+#login {
+	border: 1px solid #d6d6d6;
+	border-radius: 2px;
+	padding: 30px;
+	max-width: 400px;
+	margin: 0 auto;
+	overflow: hidden;
 }
