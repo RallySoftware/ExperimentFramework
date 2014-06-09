@@ -1,8 +1,22 @@
-var preferenceManager,profileManager;
+
+var guid = (function() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+               .toString(16)
+               .substring(1);
+  }
+  return function() {
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+           s4() + '-' + s4() + s4() + s4();
+  };
+})();
+
 $( document ).ready(function(){
+  var preferenceManager,profileManager;
   var baseUrl = "https://rally1.rallydev.com/slm/webservice/v2.0/";
   var prefUrl = baseUrl + "preference";
-  var userUrl = baseUrl + "user";
+  var userUrl = baseUrl + "user?fetch=ObjectID,DefaultProject,userprofile";
+  var experimentId;
   preferenceManager = 
   {
     getPrefs:function()
@@ -17,10 +31,13 @@ $( document ).ready(function(){
       });
       return deferred.promise;
     },
-    savePrefs:function(pref){
+    save:function(experimentId,field,value,prefObjectId){
       var deferred = Q.defer();
-      superagent.post(baseUrl)
-      .send({})
+      superagent.post(prefUrl+"/create")
+      .send({preference:{
+        Name:experimentId + " " + field,
+        Value:value
+      }})
       .withCredentials()
       .end(function(e,res){
         if(e) deferred.reject(e);
@@ -48,13 +65,44 @@ $( document ).ready(function(){
     },
     getImageUrl:function(){
       return profileManager.getCurrentUser().then(function(user){
-        return new Q('https://rally1.rallydev.com/slm/profile/image/'+user.ObjectID + '/50.sp');
+        return new Q('https://rally1.rallydev.com/slm/profile/image/'+user.ObjectID + '/200.sp');
       });
     }
   };
-
-  profileManager.getImageUrl().then(function(imageUrl){
-    $('#profile')[0].src = imageUrl;
-    console.log(imageUrl);
-  });;
+  
+  function setUp(){
+    var imageUrl = sessionStorage.getItem("imageUrl" , imageUrl);
+    function setImageUrl(imageUrl){
+      var profile = $('#profile');
+      profile[0].src = imageUrl;
+      sessionStorage.setItem("imageUrl" , imageUrl);
+      profile.removeClass('hide');
+      return new Q();
+    }
+    if(imageUrl){
+      return new Q(setImageUrl(imageUrl));
+    }
+    else{
+      return profileManager.getImageUrl()
+        .then(setImageUrl)
+    }
+  }
+  setUp()
+  .then(function(){
+    return new Q(new guid());
+  })
+  .then(function(experimentID){
+    function onBlur(a){ 
+      var prefObjectId;
+      var field = a.currentTarget.id;
+      var value = a.currentTarget.value;
+      console.log(experimentID,field,value);
+      return preferenceManager.save(experimentId,field,value,prefObjectId)
+      .then(function(){
+        return new Q();
+      });
+    }
+    $('textarea').blur(onBlur);
+    $('input').blur(onBlur);
+  })
 });
