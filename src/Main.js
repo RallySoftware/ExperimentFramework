@@ -31,10 +31,13 @@ $( document ).ready(function(){
       });
       return deferred.promise;
     },
-    save:function(experimentId,field,value,prefObectId){
+    save:function(experimentId,field,value,prefObjectId){
       var deferred = Q.defer();
       superagent.post(baseUrl)
-      .send({})
+      .send({
+        Name:experimentId + " " + field,
+        Value:value
+      })
       .withCredentials()
       .end(function(e,res){
         if(e) deferred.reject(e);
@@ -90,7 +93,11 @@ $( document ).ready(function(){
   })
   .then(function(experimentID){
     function onBlur(a){ 
-      console.log(a.currentTarget.id,a.currentTarget.value);
+      console.log(experimentID,a.currentTarget.id,a.currentTarget.value);
+      return preferenceManager.save(experimentId,field,value,prefObjectId)
+      .then(function(){
+        return new Q();
+      );
     }
     $('textarea').blur(onBlur);
     $('input').blur(onBlur);
