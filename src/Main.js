@@ -1,4 +1,5 @@
 var preferenceManager,profileManager;
+
 $( document ).ready(function(){
   var baseUrl = "https://rally1.rallydev.com/slm/webservice/v2.0/";
   var prefUrl = baseUrl + "preference";
@@ -48,14 +49,22 @@ $( document ).ready(function(){
     },
     getImageUrl:function(){
       return profileManager.getCurrentUser().then(function(user){
-        return new Q('https://rally1.rallydev.com/slm/profile/image/'+user.ObjectID + '/50.sp');
+        return new Q('https://rally1.rallydev.com/slm/profile/image/'+user.ObjectID + '/200.sp');
       });
     }
   };
-
-  profileManager.getImageUrl().then(function(imageUrl){
+  var imageUrl = sessionStorage.getItem("imageUrl" , imageUrl);
+  function setImageUrl(imageUrl){
     var profile = $('#profile');
     profile[0].src = imageUrl;
-    profile.removeClass('hide')
-  });;
+    sessionStorage.setItem("imageUrl" , imageUrl);
+    profile.removeClass('hide');
+  }
+  if(imageUrl){
+    setImageUrl(imageUrl);
+  }
+  else{
+
+    profileManager.getImageUrl().then(setImageUrl);
+  }
 });
